@@ -67,7 +67,21 @@
     </nav>
 
     <main>
-      <p>Email list</p>
+      <div class="card" tf:if="${emailList}">
+        <div class="card-header" th:text="${panelName}">Inbox</div>
+        <div class="card-body">
+          <div class="list-group">
+            <a th:each="message : ${emailList}" 
+              href="#" class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1" th:text = "${message.subject}">List group item heading</h5>
+                <small th:text="${message.timeAgo}">3 days ago</small>
+              </div>
+              <p class="mb-1" th:text = "${message.destination}">Some placeholder content in a paragraph.</p>
+              <small>And some small print.</small>
+            </a>
+          </div>
+        </div>
     </main>
 
 
