@@ -12,12 +12,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import io.inbox.folders.Folder;
 import io.inbox.folders.FolderRepository;
+import io.inbox.folders.FolderService;
 
 @Controller
 public class InboxController {
 
     @Autowired
     private FolderRepository folderRepository;
+
+    @Autowired
+    private FolderService folderService;
 
     @GetMapping(value = "/")    
     public String homePage(@AuthenticationPrincipal OAuth2User principal, Model model){
@@ -26,8 +30,12 @@ public class InboxController {
             return "index";
         
         String userId = principal.getAttribute("login");
+        
         List<Folder> userFolders = folderRepository.findAllById(userId);
         model.addAttribute("userFolders", userFolders);
+
+        List<Folder> defaultFolders = folderService.fetchDefaultFolders(userId);
+        model.addAttribute("defaultFolders", defaultFolders);
             
         return "inbox-page";
         

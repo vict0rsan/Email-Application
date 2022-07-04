@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.cassandra.CqlSessionBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.cassandra.repository.config.EnableCassandraRepositories;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.inbox.folders.Folder;
@@ -16,6 +17,7 @@ import io.inbox.folders.FolderRepository;
 
 @SpringBootApplication
 @RestController
+@EnableCassandraRepositories
 public class InboxApp {
 
     @Autowired
