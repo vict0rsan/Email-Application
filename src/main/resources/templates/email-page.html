@@ -63,25 +63,29 @@
       <div th:insert="components/folder-list :: folder-list (panelName = 'User Folders', folders = ${userFolders})">
       </div>
 
-        
+
     </nav>
 
     <main>
-      <div class="card" tf:if="${emailList}">
-        <div class="card-header" th:text="${folderName}">Inbox</div>
+      <div class="card">
+        <div class="card-header">View Email</div>
         <div class="card-body">
-          <div class="list-group">
-            <a th:each="message : ${emailList}" 
-              th:href="@{'/emails/' + ${message.key.timeUUID}}" class="list-group-item list-group-item-action">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1" th:text = "${message.subject}">List group item heading</h5>
-                <small th:text="${message.timeAgo}">3 days ago</small>
-              </div>
-              <p class="mb-1" th:text = "${message.destination}">Some placeholder content in a paragraph.</p>
-              <small>And some small print.</small>
-            </a>
-          </div>
+
+          <dl>
+            <dt>From</dt>
+            <dd th:text="${email.sender}"></dd>
+            <dt>To</dt>
+            <dd th:text="${destinations}"></dd>
+            <dt>Subject</dt>
+            <dd th:text="${email.subject}"></dd>
+            <dt>Body</dt>
+            <dd th:text="${email.body}"></dd>
+          </dl>
+
         </div>
+
+
+      </div>
     </main>
 
 
