@@ -24,8 +24,8 @@ import io.inbox.folders.Folder;
 import io.inbox.folders.FolderRepository;
 
 @SpringBootApplication
-@RestController
 @EnableCassandraRepositories
+@RestController
 public class InboxApp {
 
     @Autowired
