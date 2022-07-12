@@ -28,8 +28,8 @@ import io.inbox.folders.FolderRepository;
 @RestController
 public class InboxApp {
 
-    /*@Autowired
-    FolderRepository folderRespository;*/
+    @Autowired
+    FolderRepository folderRespository;
 
     @Autowired
     EmailListItemRepository emailListItemRepository;
@@ -49,9 +49,9 @@ public class InboxApp {
 
     @PostConstruct
     public void init(){
-        /*folderRespository.save(new Folder("vict0rsan", "Inbox", "blue"));
+        folderRespository.save(new Folder("vict0rsan", "Inbox", "blue"));
         folderRespository.save(new Folder("vict0rsan", "Sent", "green"));
-        folderRespository.save(new Folder("vict0rsan", "Important", "yellow"));*/
+        folderRespository.save(new Folder("vict0rsan", "Important", "yellow"));
 
         for(int i = 0; i < 10; i++){
             EmailListItemKey key = new EmailListItemKey();

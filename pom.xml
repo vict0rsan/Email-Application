@@ -66,10 +66,10 @@
 		<dependency>
 			<groupId>com.datastax.oss</groupId>
 			<artifactId>java-driver-core</artifactId>
-			<version>4.13.0</version>
-		  </dependency>
+			<version>4.14.1</version>
+		</dependency>
 		  
-		  <dependency>
+		<dependency>
 			<groupId>org.ocpsoft.prettytime</groupId>
 			<artifactId>prettytime</artifactId>
 			<version>5.0.2.Final</version>

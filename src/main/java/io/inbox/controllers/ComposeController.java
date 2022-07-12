@@ -61,7 +61,7 @@ public class ComposeController {
 
     private List<String> getIdListFromDestination(String destination) {
 
-        if(StringUtils.hasText(destination)){
+        if(!StringUtils.hasText(destination)){
             return new ArrayList<String>();
         }
 

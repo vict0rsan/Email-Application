@@ -60,10 +60,12 @@
         <a href="/compose" class="btn btn-primary"> Write Message</a>
       </div>
       
-      <div th:insert="components/folder-list :: folder-list (panelName = 'Folders', folders = ${defaultFolders})">
+      <div 
+        th:insert="components/folder-list :: folder-list (panelName = 'Folders', folders = ${defaultFolders})">
       </div>
 
-      <div th:insert="components/folder-list :: folder-list (panelName = 'User Folders', folders = ${userFolders})">
+      <div 
+        th:insert="components/folder-list :: folder-list (panelName = 'User Folders', folders = ${userFolders})">
       </div>
 
         
