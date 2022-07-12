@@ -1,6 +1,7 @@
 package io.inbox.controllers;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -45,6 +46,8 @@ public class EmailController {
         model.addAttribute("userFolders", userFolders);
         List<Folder> defaultFolders = folderService.fetchDefaultFolders(userId);
         model.addAttribute("defaultFolders", defaultFolders);
+        Map<String, Integer> unreadEmailStats = folderService.mapCountToLabels(userId);
+        model.addAttribute("stats", unreadEmailStats);
 
         Optional<Email> optionalEmail = emailRepository.findById(id);
 

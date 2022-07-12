@@ -3,6 +3,7 @@ package io.inbox.controllers;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.UUID;
 
 import org.ocpsoft.prettytime.PrettyTime;
@@ -22,6 +23,7 @@ import io.inbox.emaiList.EmailListItemRepository;
 import io.inbox.folders.Folder;
 import io.inbox.folders.FolderRepository;
 import io.inbox.folders.FolderService;
+import io.inbox.folders.UnreadEmailStatsRepository;
 
 @Controller
 public class InboxController {
@@ -34,6 +36,9 @@ public class InboxController {
 
     @Autowired
     private EmailListItemRepository emailListItemRepository;
+
+    @Autowired
+    private UnreadEmailStatsRepository unreadEmailStatsRepository;
 
     @GetMapping(value = "/")    
     public String homePage(@RequestParam(required = false) String folder,
@@ -48,6 +53,8 @@ public class InboxController {
         model.addAttribute("userFolders", userFolders);
         List<Folder> defaultFolders = folderService.fetchDefaultFolders(userId);
         model.addAttribute("defaultFolders", defaultFolders);
+        Map<String, Integer> unreadEmailStats = folderService.mapCountToLabels(userId);
+        model.addAttribute("stats", unreadEmailStats);
 
         if(!StringUtils.hasText(folder)){
             folder = "Inbox";

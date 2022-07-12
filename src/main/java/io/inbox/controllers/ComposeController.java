@@ -3,6 +3,7 @@ package io.inbox.controllers;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +50,8 @@ public class ComposeController {
         model.addAttribute("userFolders", userFolders);
         List<Folder> defaultFolders = folderService.fetchDefaultFolders(userId);
         model.addAttribute("defaultFolders", defaultFolders);
-
+        Map<String, Integer> unreadEmailStats = folderService.mapCountToLabels(userId);
+        model.addAttribute("stats", unreadEmailStats);
         List<String> uniqueIds = getIdListFromDestination(to);
         model.addAttribute("toIds", String.join(", ", uniqueIds));
         
