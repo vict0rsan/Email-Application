@@ -49,18 +49,14 @@ public class ComposeController {
         model.addAttribute("userFolders", userFolders);
         List<Folder> defaultFolders = folderService.fetchDefaultFolders(userId);
         model.addAttribute("defaultFolders", defaultFolders);
-        
 
-           
         List<String> uniqueIds = getIdListFromDestination(to);
         model.addAttribute("toIds", String.join(", ", uniqueIds));
         
-
         return "compose-page";
     }
 
     private List<String> getIdListFromDestination(String destination) {
-
         if(!StringUtils.hasText(destination)){
             return new ArrayList<String>();
         }

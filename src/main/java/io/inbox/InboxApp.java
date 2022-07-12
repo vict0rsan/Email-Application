@@ -22,6 +22,7 @@ import io.inbox.email.Email;
 import io.inbox.email.EmailRepository;
 import io.inbox.folders.Folder;
 import io.inbox.folders.FolderRepository;
+import io.inbox.folders.UnreadEmailStatsRepository;
 
 @SpringBootApplication
 @EnableCassandraRepositories
@@ -36,6 +37,9 @@ public class InboxApp {
 
     @Autowired
     EmailRepository emailRepository;
+
+    @Autowired
+    UnreadEmailStatsRepository unreadEmailStatsRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(InboxApp.class, args);
@@ -52,6 +56,10 @@ public class InboxApp {
         folderRespository.save(new Folder("vict0rsan", "Inbox", "blue"));
         folderRespository.save(new Folder("vict0rsan", "Sent", "green"));
         folderRespository.save(new Folder("vict0rsan", "Important", "yellow"));
+
+        unreadEmailStatsRepository.incrementUnreadCounter("vict0rsan", "Inbox");
+        unreadEmailStatsRepository.incrementUnreadCounter("vict0rsan", "Inbox");
+        unreadEmailStatsRepository.incrementUnreadCounter("vict0rsan", "Inbox");
 
         for(int i = 0; i < 10; i++){
             EmailListItemKey key = new EmailListItemKey();
