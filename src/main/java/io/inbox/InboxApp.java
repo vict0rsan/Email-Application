@@ -43,8 +43,8 @@ public class InboxApp {
     @PostConstruct
     public void init(){
         folderRespository.save(new Folder("vict0rsan", "Work", "blue"));
-        folderRespository.save(new Folder("vict0rsan", "University", "green"));
         folderRespository.save(new Folder("vict0rsan", "Family", "yellow"));
+        folderRespository.save(new Folder("vict0rsan", "University", "red"));
 
         for(int i = 0; i < 10; i++){
             emailService.sendEmail("vict0rsan", Arrays.asList("vict0rsan", "test1", "abc"), "Hello: " + i, "Body: " + i);
