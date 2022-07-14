@@ -72,8 +72,13 @@ public class EmailController {
         String destinations = String.join(", ", email.getDestination());
 
 
-        if(!(userId.equals(email.getSender()) && email.getDestination().contains(userId))){
-            return "inbox-page";
+        if(!(userId.equals(email.getSender())) && !(email.getDestination().contains(userId))){
+            System.out.println("Sender: " + email.getSender());
+            System.out.println("Destination: " + email.getDestination());
+            System.out.println("UserId: " + userId);
+            System.out.println("UserId contained in destination: " + email.getDestination().contains(userId));
+            System.out.println("Redirecting...");
+            return "redirect:/";
         }
 
 

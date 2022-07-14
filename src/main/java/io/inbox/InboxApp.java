@@ -50,5 +50,7 @@ public class InboxApp {
             emailService.sendEmail("vict0rsan", Arrays.asList("vict0rsan", "test1", "abc"), "Hello: " + i, "Body: " + i);
         }
 
+        emailService.sendEmail("abc", Arrays.asList("vict0rsan", "test1", "abc"), "Hello victor" , "448974123Z");
+
     }
 }
