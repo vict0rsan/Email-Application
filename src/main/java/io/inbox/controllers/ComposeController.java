@@ -50,6 +50,8 @@ public class ComposeController {
         model.addAttribute("userFolders", userFolders);
         List<Folder> defaultFolders = folderService.fetchDefaultFolders(userId);
         model.addAttribute("defaultFolders", defaultFolders);
+        model.addAttribute("userId", userId);    
+
         Map<String, Integer> unreadEmailStats = folderService.mapCountToLabels(userId);
         model.addAttribute("stats", unreadEmailStats);
         List<String> uniqueIds = getIdListFromDestination(to);

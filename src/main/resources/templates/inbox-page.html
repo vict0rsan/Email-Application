@@ -14,6 +14,7 @@
   <style>
     .container {
       display: grid;
+      margin-top: 20px;
 
       grid-template-areas:
         "header header header"
@@ -53,8 +54,10 @@
 
   <div class="container">
     <header>
-      <h1>Hello, Name</h1>
-
+      <h3>
+        Email App
+        <small class="text-muted" th:text="'Welcome back ' + ${userId}">User name</small>
+      </h3>
     </header>
 
     <nav>

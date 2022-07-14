@@ -60,6 +60,7 @@ public class EmailController {
         model.addAttribute("userFolders", userFolders);
         List<Folder> defaultFolders = folderService.fetchDefaultFolders(userId);
         model.addAttribute("defaultFolders", defaultFolders);
+        model.addAttribute("userId", userId);
 
         Optional<Email> optionalEmail = emailRepository.findById(id);
 
@@ -69,6 +70,13 @@ public class EmailController {
 
         Email email = optionalEmail.get();
         String destinations = String.join(", ", email.getDestination());
+
+
+        if(!(userId.equals(email.getSender()) && email.getDestination().contains(userId))){
+            return "inbox-page";
+        }
+
+
         model.addAttribute("email", email);
         model.addAttribute("destinations", destinations);
 
